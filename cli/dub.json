@@ -1,0 +1,13 @@
+{
+	"name"         : "cli",
+	"description"  : "SDL parsing app used as an example and for testing",
+	"authors"      : [ "Михаил Страшун", "Nick Sabalausky" ],
+    "license"      : "Zlib",
+
+    "targetType"   : "executable",
+    "targetName"   : "sdlparse",
+
+	"dependencies" : {
+        "libsdl-d" : { "path" : "../" }
+	}
+}

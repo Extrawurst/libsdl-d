@@ -1,0 +1,7 @@
+.dub
+libsdl-d.a
+__test__library__
+dub.selections.json
+cli/sdlparse
+test/test
+dub.userprefs

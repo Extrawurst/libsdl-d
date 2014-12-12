@@ -1,0 +1,13 @@
+{
+	"name"         : "test",
+	"description"  : "High level test for libsdl-d",
+	"copyright"    : "Public Domain",
+	"authors"      : [ "Михаил Страшун" ],
+
+    "targetType"   : "executable",
+    "targetName"   : "test",
+
+	"dependencies" : {
+        "cli" : { "path" : "../cli" }
+	}
+}

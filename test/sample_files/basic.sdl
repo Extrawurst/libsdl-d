@@ -1,0 +1,6 @@
+# A tag with a value
+size 4
+// A tag with a value list
+sizes 23 35 12 53
+-- A tag with a value list and attributes
+ages 26 24 25 dog_years=false date_of_survey=2005/12/05

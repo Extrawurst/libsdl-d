@@ -1,0 +1,8 @@
+// comment 1
+#  comment 2
+---------------
+-- comment 3 --
+---------------
+value1 /* in the midlle */ 42
+value2 # end of the line
+value3 // mixed -- end of the line

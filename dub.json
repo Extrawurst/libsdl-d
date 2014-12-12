@@ -1,0 +1,13 @@
+{
+	"name"         : "libsdl-d",
+	"description"  : "Simple Declarative Language processing library, written with dub in mind",
+	"authors"      : [ "Михаил Страшун", "Nick Sabalausky" ],
+    "license"      : "Zlib",
+
+    "targetName"   : "sdl-d",
+
+    "subPackages"  : [
+        "./cli",
+        "./test"
+    ]
+}
