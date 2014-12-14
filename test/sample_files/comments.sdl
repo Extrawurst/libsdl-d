@@ -4,5 +4,5 @@
 -- comment 3 --
 ---------------
 value1 /* in the midlle */ 42
-value2 # end of the line
-value3 // mixed -- end of the line
+value2 43 # end of the line
+value3 44 // mixed -- end of the line

@@ -193,7 +193,13 @@ class Lexer
 		return hasNextCh && nextCh == ch;
 	}
 
-	private bool isNewline(dchar ch)
+	private bool lookahead(bool function(dchar) condition)
+	{
+		return hasNextCh && condition(nextCh);
+	}
+
+
+	private static bool isNewline(dchar ch)
 	{
 		return ch == '\n' || ch == '\r' || ch == lineSep || ch == paraSep;
 	}
@@ -1397,7 +1403,7 @@ class Lexer
 				break;
 			
 			case State.lineComment:
-				if(isNewline(ch))
+                if (lookahead(&isNewline))
 					state = State.normal;
 				break;
 			
