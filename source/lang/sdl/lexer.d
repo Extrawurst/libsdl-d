@@ -1356,6 +1356,8 @@ class Lexer
 
 					commentStart = location;
 					state = State.lineComment;
+
+                    goto case State.lineComment;
 				}
 
 				else if(ch == '/' || ch == '-')
@@ -1368,6 +1370,8 @@ class Lexer
 
 						advanceChar(ErrorOnEOF.No);
 						state = State.lineComment;
+
+                        goto case State.lineComment;
 					}
 					else if(ch == '/' && lookahead('*'))
 					{
@@ -1376,6 +1380,8 @@ class Lexer
 
 						advanceChar(ErrorOnEOF.No);
 						state = State.blockComment;
+
+                        goto case State.blockComment;
 					}
 					else
 						return; // Done
@@ -1947,9 +1953,11 @@ unittest
 		Token(symbol!":",     loc, Value(        null ), ":"),
 		Token(symbol!"Ident", loc, Value(        null ), "favorite_color"),
 		Token(symbol!"Value", loc, Value(      "blue" ), `"blue"`),
+		Token(symbol!"EOL",   loc, Value(        null ), "\n"),
 
 		Token(symbol!"Ident", loc, Value( null ), "somedate"),
 		Token(symbol!"Value", loc, Value( DateTimeFrac(DateTime(2013, 2, 22, 7, 53, 0)) ), "2013/2/22  07:53"),
+		Token(symbol!"EOL",   loc, Value( null ), "\n"),
 		Token(symbol!"EOL",   loc, Value( null ), "\n"),
 
 		Token(symbol!"Ident", loc, Value(null), "inventory"),
@@ -1984,9 +1992,18 @@ unittest
 {
 	writeln("lexer: Regression test issue #11...");
 	stdout.flush();
+
+    void test(string input)
+    {
+        testLex(
+            input,
+            [ Token(symbol!"EOL", loc, Value(null), "\n"),
+              Token(symbol!"Ident",loc,Value(null), "a") ]
+        );
+    }
 	
-	testLex("//X\na", [ Token(symbol!"Ident",loc,Value(null),"a") ]);
-	testLex("//\na",  [ Token(symbol!"Ident",loc,Value(null),"a") ]);
-	testLex("--\na",  [ Token(symbol!"Ident",loc,Value(null),"a") ]);
-	testLex("#\na",   [ Token(symbol!"Ident",loc,Value(null),"a") ]);
+	test("//X\na");
+	test("//\na");
+    test("--\na");
+	test("#\na");
 }
