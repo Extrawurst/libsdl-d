@@ -1099,9 +1099,9 @@ class Tag
 			buf.put("    (%s): %s\n".format(.toString(val.type), val));
 
 		// Attributes
-		foreach(attrNamespace; _attributes.keys.sort)
+		foreach(attrNamespace; sort(_attributes.keys))
 		if(attrNamespace != "*")
-		foreach(attrName; _attributes[attrNamespace].keys.sort)
+		foreach(attrName; sort(_attributes[attrNamespace].keys))
 		foreach(attr; _attributes[attrNamespace][attrName])
 		{
 			string namespaceStr;
@@ -1116,9 +1116,9 @@ class Tag
 		}
 		
 		// Children
-		foreach(tagNamespace; _tags.keys.sort)
+		foreach(tagNamespace; sort(_tags.keys))
 		if(tagNamespace != "*")
-		foreach(tagName; _tags[tagNamespace].keys.sort)
+		foreach(tagName; sort(_tags[tagNamespace].keys))
 		foreach(tag; _tags[tagNamespace][tagName])
 			buf.put( tag.toDebugString().replace("\n", "\n    ") );
 		

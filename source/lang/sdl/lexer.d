@@ -640,7 +640,7 @@ class Lexer
 		// Skips all whitespace. Throws on invalid chars.
 		struct Base64InputRange
 		{
-			Lexer *lexer;
+			Lexer lexer;
 			private bool isInited = false;
 			private int numInputCharsMod4 = 0;
 			
@@ -698,7 +698,7 @@ class Lexer
 		// This is a slow ugly hack. It's necessary because Base64.decode
 		// currently requires the source to have known length.
 		//TODO: Remove this when DMD issue #9543 is fixed.
-		dchar[] tmpBuf = array(Base64InputRange(&this));
+		dchar[] tmpBuf = array(Base64InputRange(this));
 
 		Appender!(ubyte[]) outputBuf;
 		// Ugly workaround for DMD issue #9102
