@@ -5,9 +5,4 @@
     "license"      : "Zlib",
 
     "targetName"   : "sdl-d",
-
-    "subPackages"  : [
-        "./cli",
-        "./test"
-    ]
 }
